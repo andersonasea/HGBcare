@@ -30,10 +30,24 @@ export default function Register() {
       toast.success('Compte créé avec succès !')
       navigate('/')
     } catch (err) {
-      if (err instanceof FirebaseError && err.code === 'auth/email-already-in-use') {
-        toast.error('Cet email est déjà utilisé.')
+      const message = err instanceof Error ? err.message : ''
+      if (err instanceof FirebaseError) {
+        if (err.code === 'auth/email-already-in-use') {
+          toast.error('Cet email est déjà utilisé.')
+        } else if (err.code === 'auth/weak-password') {
+          toast.error('Le mot de passe doit contenir au moins 6 caractères.')
+        } else if (err.code === 'auth/invalid-email') {
+          toast.error('Adresse email invalide.')
+        } else {
+          toast.error(message || "Erreur lors de l'inscription.")
+        }
+      } else if (message.includes("Firebase n'est pas configuré") || message.includes('pas configuré')) {
+        toast.error(
+          "Firebase n'est pas configuré. Placez le fichier .env à la racine du projet (à côté de package.json), avec vos clés Firebase, puis redémarrez le serveur (npm run dev).",
+          { duration: 6000 }
+        )
       } else {
-        toast.error("Erreur lors de l'inscription.")
+        toast.error(message || "Erreur lors de l'inscription.")
       }
     } finally {
       setLoading(false)
@@ -46,7 +60,7 @@ export default function Register() {
         <div className="text-center mb-8">
           <span className="text-4xl">🍽️</span>
           <h1 className="text-2xl font-bold mt-4 mb-2">Créer un compte</h1>
-          <p className="text-gray-500">Rejoignez la communauté FoodIsBae</p>
+          <p className="text-gray-500">Rejoignez la communauté HBG Care</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">

@@ -14,7 +14,10 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
 import About from './pages/About'
+import Mission from './pages/Mission'
 import Contact from './pages/Contact'
+import Services from './pages/Services'
+import Partenaires from './pages/Partenaires'
 import Dashboard from './pages/admin/Dashboard'
 import MenuManager from './pages/admin/MenuManager'
 import OrdersManager from './pages/admin/OrdersManager'
@@ -56,7 +59,10 @@ export default function App() {
                       <Route path="/login" element={<Login />} />
                       <Route path="/register" element={<Register />} />
                       <Route path="/profile" element={<Profile />} />
+                      <Route path="/services" element={<Services />} />
+                      <Route path="/partenaires" element={<Partenaires />} />
                       <Route path="/about" element={<About />} />
+                      <Route path="/mission" element={<Mission />} />
                       <Route path="/contact" element={<Contact />} />
                     </Routes>
                   </main>

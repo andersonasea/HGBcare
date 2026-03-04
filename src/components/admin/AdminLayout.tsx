@@ -9,8 +9,8 @@ import {
 
 const navItems = [
   { to: '/admin', icon: LayoutDashboard, label: 'Tableau de bord', end: true },
-  { to: '/admin/menu', icon: UtensilsCrossed, label: 'Menu' },
-  { to: '/admin/orders', icon: ShoppingBag, label: 'Commandes' },
+  { to: '/admin/menu', icon: UtensilsCrossed, label: 'Formations' },
+  { to: '/admin/orders', icon: ShoppingBag, label: 'Inscriptions' },
   { to: '/admin/reservations', icon: CalendarDays, label: 'Réservations' },
 ]
 
@@ -20,7 +20,7 @@ export default function AdminLayout() {
       <aside className="w-64 bg-dark text-white flex flex-col shrink-0">
         <div className="p-6 border-b border-gray-700">
           <h2 className="text-lg font-bold">
-            🍽️ Food<span className="text-primary">IsBae</span>
+            ⚕️ HBG <span className="text-primary">Care</span>
           </h2>
           <p className="text-xs text-gray-400 mt-1">Administration</p>
         </div>

@@ -22,7 +22,7 @@ const statusLabels: Record<string, string> = {
   confirmed: 'Confirmée',
   cancelled: 'Annulée',
   pending: 'En attente',
-  delivered: 'Livrée',
+  delivered: 'Confirmée',
 }
 
 const statusColors: Record<string, string> = {
@@ -60,9 +60,9 @@ export default function Dashboard() {
   }
 
   const cards = [
-    { label: 'Commandes', value: stats.totalOrders, icon: ShoppingBag, color: 'bg-blue-500' },
+    { label: 'Inscriptions', value: stats.totalOrders, icon: ShoppingBag, color: 'bg-blue-500' },
     { label: 'Réservations', value: stats.totalReservations, icon: CalendarDays, color: 'bg-green-500' },
-    { label: 'Plats au menu', value: stats.totalMenuItems, icon: UtensilsCrossed, color: 'bg-purple-500' },
+    { label: 'Formations', value: stats.totalMenuItems, icon: UtensilsCrossed, color: 'bg-purple-500' },
     { label: 'Revenus', value: `${stats.totalRevenue.toFixed(2)} €`, icon: DollarSign, color: 'bg-primary' },
   ]
 
@@ -86,9 +86,9 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-xl shadow-sm p-6">
-          <h2 className="font-semibold text-lg mb-4">Dernières commandes</h2>
+          <h2 className="font-semibold text-lg mb-4">Dernières inscriptions</h2>
           {stats.recentOrders.length === 0 ? (
-            <p className="text-gray-400 text-sm">Aucune commande.</p>
+            <p className="text-gray-400 text-sm">Aucune inscription.</p>
           ) : (
             <div className="space-y-3">
               {stats.recentOrders.map((o) => (
@@ -122,7 +122,7 @@ export default function Dashboard() {
                   <div>
                     <p className="text-sm font-medium">{r.name}</p>
                     <p className="text-xs text-gray-400">
-                      {r.date} à {r.time} — {r.guests} pers.
+                      {r.date} à {r.time} — {r.guests === '1' ? 'Consultation' : r.guests === '2' ? 'Formation indiv.' : r.guests === '3' ? 'Formation groupe' : 'Autre'}
                     </p>
                   </div>
                   <span className={`text-xs px-2 py-1 rounded-full ${statusColors[r.status] || ''}`}>

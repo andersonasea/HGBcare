@@ -4,6 +4,7 @@ import { ShoppingCart, Menu, X, User, LogOut, Settings } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import { useCart } from '../../context/CartContext'
 import { logoutUser } from '../../services/authService'
+import logoHbgCare from '../../assets/hbg-care-new-logo.png'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,24 +19,27 @@ export default function Navbar() {
   const handleLogout = async () => {
     await logoutUser()
     setIsOpen(false)
-  }
+  } 
 
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl">🍽️</span>
+            <img src={logoHbgCare} alt="HBG Care" className="h-9 w-auto" />
             <span className="text-xl font-bold text-dark">
-              Food<span className="text-primary">IsBae</span>
+              HBG<span className="text-primary">care</span>
             </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
             <NavLink to="/" className={navLinkClass}>Accueil</NavLink>
-            <NavLink to="/menu" className={navLinkClass}>Menu</NavLink>
-            <NavLink to="/reservation" className={navLinkClass}>Réservation</NavLink>
+            <NavLink to="/menu" className={navLinkClass}>Formations</NavLink>
+            <NavLink to="/services" className={navLinkClass}>Nos services</NavLink>
+            <NavLink to="/partenaires" className={navLinkClass}>Partenaires</NavLink>
+           
             <NavLink to="/about" className={navLinkClass}>À propos</NavLink>
+            <NavLink to="/mission" className={navLinkClass}>Mission</NavLink>
             <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
           </div>
 
@@ -99,13 +103,19 @@ export default function Navbar() {
               Accueil
             </NavLink>
             <NavLink to="/menu" className="block py-1" onClick={() => setIsOpen(false)}>
-              Menu
+              Formations
+            </NavLink>
+            <NavLink to="/services" className="block py-1" onClick={() => setIsOpen(false)}>
+              Nos services
+            </NavLink>
+            <NavLink to="/partenaires" className="block py-1" onClick={() => setIsOpen(false)}>
+              Partenaires
             </NavLink>
             <NavLink to="/reservation" className="block py-1" onClick={() => setIsOpen(false)}>
               Réservation
             </NavLink>
             <NavLink to="/order" className="block py-1" onClick={() => setIsOpen(false)}>
-              Commande ({totalItems})
+              Mes inscriptions ({totalItems})
             </NavLink>
             <NavLink to="/about" className="block py-1" onClick={() => setIsOpen(false)}>
               À propos

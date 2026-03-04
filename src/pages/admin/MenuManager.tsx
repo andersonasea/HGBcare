@@ -33,7 +33,7 @@ export default function MenuManager() {
       setItems(data)
     } catch (err) {
       console.error(err)
-      toast.error('Erreur lors du chargement du menu.')
+      toast.error('Erreur lors du chargement des formations.')
     } finally {
       setLoading(false)
     }
@@ -65,10 +65,10 @@ export default function MenuManager() {
       data.price = Number(data.price)
       if (editingItem) {
         await updateMenuItem(editingItem.id, data)
-        toast.success('Plat modifié avec succès.')
+        toast.success('Formation modifiée avec succès.')
       } else {
         await addMenuItem(data)
-        toast.success('Plat ajouté avec succès.')
+        toast.success('Formation ajoutée avec succès.')
       }
       setShowForm(false)
       setEditingItem(null)
@@ -81,10 +81,10 @@ export default function MenuManager() {
   }
 
   const handleDelete = async (item: MenuItem) => {
-    if (!confirm(`Supprimer "${item.name}" ?`)) return
+    if (!confirm(`Supprimer la formation "${item.name}" ?`)) return
     try {
       await deleteMenuItem(item.id)
-      toast.success('Plat supprimé.')
+      toast.success('Formation supprimée.')
       await loadItems()
     } catch (err) {
       console.error(err)
@@ -103,13 +103,13 @@ export default function MenuManager() {
   return (
     <div className="p-8">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-bold">Gestion du menu</h1>
+        <h1 className="text-2xl font-bold">Gestion des formations</h1>
         <button
           onClick={openAddForm}
           className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
         >
           <Plus size={18} />
-          Ajouter un plat
+          Ajouter une formation
         </button>
       </div>
 
@@ -119,7 +119,7 @@ export default function MenuManager() {
           <div className="bg-white rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-bold">
-                {editingItem ? 'Modifier le plat' : 'Nouveau plat'}
+                {editingItem ? 'Modifier la formation' : 'Nouvelle formation'}
               </h2>
               <button
                 onClick={() => { setShowForm(false); setEditingItem(null) }}
@@ -131,7 +131,7 @@ export default function MenuManager() {
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
-                <label className="text-sm font-medium block mb-1">Nom du plat</label>
+                <label className="text-sm font-medium block mb-1">Nom de la formation</label>
                 <input
                   type="text"
                   {...register('name', { required: 'Requis' })}
@@ -189,7 +189,7 @@ export default function MenuManager() {
 
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" {...register('popular')} className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary" />
-                <span className="text-sm font-medium">Plat populaire</span>
+                <span className="text-sm font-medium">Formation recommandée</span>
               </label>
 
               <button
@@ -208,15 +208,15 @@ export default function MenuManager() {
       {items.length === 0 ? (
         <div className="bg-white rounded-xl p-12 text-center text-gray-400">
           <UtensilsCrossed size={48} className="mx-auto mb-4 opacity-50" />
-          <p>Aucun plat dans la base de données.</p>
-          <p className="text-sm mt-1">Cliquez sur "Ajouter un plat" pour commencer.</p>
+          <p>Aucune formation dans la base de données.</p>
+          <p className="text-sm mt-1">Cliquez sur "Ajouter une formation" pour commencer.</p>
         </div>
       ) : (
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-100 text-left text-sm text-gray-500">
-                <th className="px-6 py-4 font-medium">Plat</th>
+                <th className="px-6 py-4 font-medium">Formation</th>
                 <th className="px-6 py-4 font-medium">Catégorie</th>
                 <th className="px-6 py-4 font-medium">Prix</th>
                 <th className="px-6 py-4 font-medium">Populaire</th>

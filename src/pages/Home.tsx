@@ -6,9 +6,9 @@ import type { Testimonial } from '../types'
 const popularItems = SAMPLE_MENU.filter((item) => item.popular).slice(0, 4)
 
 const testimonials: Testimonial[] = [
-  { name: 'Marie L.', text: 'Une cuisine incroyable et un service irréprochable. Mon restaurant préféré !', rating: 5 },
-  { name: 'Thomas D.', text: 'Le burger FoodIsBae est tout simplement le meilleur de kinshasa.', rating: 5 },
-  { name: 'Sophie M.', text: 'Ambiance chaleureuse, plats savoureux. On y retourne chaque semaine.', rating: 4 },
+  { name: 'Marie L.', text: 'J\'ai appris à réagir face à une crise sans être médecin. Formation claire et rassurante.', rating: 5 },
+  { name: 'Thomas D.', text: 'En tant que médecin, les formations avancées HBG Care m\'ont vraiment fait progresser.', rating: 5 },
+  { name: 'Sophie M.', text: 'Le module premiers secours grand public est accessible et bien expliqué. Je recommande.', rating: 4 },
 ]
 
 export default function Home() {
@@ -21,25 +21,25 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-              L'amour de la bonne
-              <span className="text-primary"> cuisine</span>
-            </h1>
+              HBB CARE :
+              </h1>
+              <span className="text-gray-200 text-2xl italic"> Soins accessibles au-delà des frontières de la santé </span>
+            
             <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-              Découvrez une expérience culinaire unique chez FoodIsBae. Des plats préparés avec passion,
-              des ingrédients frais et une ambiance qui vous fera revenir.
+              Une entreprise de santé innovante qui s’engage à rendre les Soins accessibles à tous..
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/menu"
                 className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2"
               >
-                Voir le menu <ArrowRight size={18} />
+                Voir Nos Formations <ArrowRight size={18} />
               </Link>
               <Link
                 to="/reservation"
                 className="border-2 border-white text-white hover:bg-white hover:text-dark px-8 py-3 rounded-lg font-semibold transition-colors"
               >
-                Réserver une table
+                Réserver une Consultation
               </Link>
             </div>
           </div>
@@ -53,15 +53,24 @@ export default function Home() {
               <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Utensils className="text-primary" size={28} />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Cuisine fraîche</h3>
-              <p className="text-gray-500">Des ingrédients locaux et de saison, préparés chaque jour avec soin.</p>
+              <h3 className="font-semibold text-lg mb-2">Tourisme Medicale</h3>
+              <section className="text-gray-500"> 
+                <ul>
+                  <li>Analyse medicale et coordination Hospitalire</li>
+                  <li>Organization du voyage medical: vols, visas, conciergeries</li>
+                  <li>Traduction,accompagnement, suivi personnalise</li>
+                  <li>Acces a des specialistes reconnus</li>
+                </ul>
+                  
+
+              </section>
             </div>
             <div className="text-center p-6">
               <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Clock className="text-primary" size={28} />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Service rapide</h3>
-              <p className="text-gray-500">Commandez en ligne et récupérez vos plats en un temps record.</p>
+              <h3 className="font-semibold text-lg mb-2">Formations accessibles</h3>
+              <p className="text-gray-500">Formations en ligne et en présentiel, du grand public aux professionnels de santé.</p>
             </div>
             <div className="text-center p-6">
               <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -77,9 +86,9 @@ export default function Home() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Nos plats populaires</h2>
+            <h2 className="text-3xl font-bold mb-4">Formations les plus demandées</h2>
             <p className="text-gray-500 max-w-xl mx-auto">
-              Découvrez les favoris de nos clients, préparés avec les meilleurs ingrédients.
+              Du grand public aux médecins : premiers secours, gestion de crise, urgences avancées.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -92,9 +101,9 @@ export default function Home() {
                 <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
                 <p className="text-gray-500 text-sm mb-3 line-clamp-2">{item.description}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-primary font-bold text-lg">{item.price.toFixed(2)} €</span>
+                  <span className="text-primary font-bold text-lg">{item.price === 0 ? 'Gratuit' : `${item.price.toFixed(2)} €`}</span>
                   <Link to="/menu" className="text-sm text-accent hover:underline font-medium">
-                    Commander
+                    S'inscrire
                   </Link>
                 </div>
               </div>
@@ -105,7 +114,7 @@ export default function Home() {
               to="/menu"
               className="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold transition-colors"
             >
-              Voir tout le menu <ArrowRight size={18} />
+              Voir toutes les formations <ArrowRight size={18} />
             </Link>
           </div>
         </div>
@@ -134,22 +143,22 @@ export default function Home() {
 
       <section className="py-16 bg-primary text-white text-center">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">Prêt à vivre l'expérience FoodIsBae ?</h2>
+          <h2 className="text-3xl font-bold mb-4">Prêt à vous former avec HBG Care ?</h2>
           <p className="text-lg mb-8 opacity-90">
-            Réservez votre table dès maintenant ou commandez vos plats préférés en ligne.
+            Choisissez vos formations (grand public ou médecins) ou réservez une consultation.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/reservation"
               className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
             >
-              Réserver une table
+              Réserver une consultation
             </Link>
             <Link
-              to="/order"
+              to="/menu"
               className="border-2 border-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition-colors"
             >
-              Commander en ligne
+              Voir les formations
             </Link>
           </div>
         </div>

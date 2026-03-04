@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 
 const statusOptions: { value: Order['status']; label: string }[] = [
   { value: 'pending', label: 'En attente' },
-  { value: 'delivered', label: 'Livrée' },
+  { value: 'delivered', label: 'Confirmée' },
   { value: 'cancelled', label: 'Annulée' },
 ]
 
@@ -26,7 +26,7 @@ export default function OrdersManager() {
       setOrders(data)
     } catch (err) {
       console.error(err)
-      toast.error('Erreur lors du chargement des commandes.')
+      toast.error('Erreur lors du chargement des inscriptions.')
     } finally {
       setLoading(false)
     }
@@ -59,12 +59,12 @@ export default function OrdersManager() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-8">Gestion des commandes</h1>
+      <h1 className="text-2xl font-bold mb-8">Gestion des inscriptions</h1>
 
       {orders.length === 0 ? (
         <div className="bg-white rounded-xl p-12 text-center text-gray-400">
           <ShoppingBag size={48} className="mx-auto mb-4 opacity-50" />
-          <p>Aucune commande pour le moment.</p>
+          <p>Aucune inscription pour le moment.</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -72,7 +72,7 @@ export default function OrdersManager() {
             <div key={order.id} className="bg-white rounded-xl shadow-sm p-6">
               <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                 <div>
-                  <p className="font-semibold text-lg">Commande #{order.id.slice(-6)}</p>
+                  <p className="font-semibold text-lg">Inscription #{order.id.slice(-6)}</p>
                   <p className="text-sm text-gray-400">
                     {new Date(order.createdAt).toLocaleString('fr-FR')}
                   </p>

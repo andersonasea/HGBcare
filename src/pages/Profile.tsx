@@ -20,7 +20,7 @@ const statusLabels: Record<string, string> = {
   confirmed: 'Confirmée',
   cancelled: 'Annulée',
   pending: 'En attente',
-  delivered: 'Livrée',
+  delivered: 'Confirmée',
 }
 
 export default function Profile() {

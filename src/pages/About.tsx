@@ -4,23 +4,23 @@ import type { ValueItem } from '../types'
 const values: ValueItem[] = [
   {
     icon: ChefHat,
-    title: 'Passion culinaire',
-    text: 'Nos chefs créent chaque plat avec amour et expertise pour vous offrir une expérience inoubliable.',
+    title: 'Formation grand public',
+    text: 'Apprenez à réagir face à une crise, aux premiers secours et aux gestes qui sauvent, sans être médecin.',
   },
   {
     icon: Leaf,
-    title: 'Ingrédients frais',
-    text: "Nous sélectionnons soigneusement des produits locaux et de saison pour garantir fraîcheur et qualité.",
+    title: 'Formations pour médecins',
+    text: 'Formations avancées en urgences, réanimation, trauma et pédiatrie pour les professionnels de santé.',
   },
   {
     icon: Heart,
-    title: 'Ambiance chaleureuse',
-    text: "Un cadre convivial où chaque client se sent comme chez soi, pour des moments de partage uniques.",
+    title: 'Accessible à tous',
+    text: 'Des formations gratuites ou payantes, en ligne et en présentiel, pour rendre les soins accessibles au-delà des frontières.',
   },
   {
     icon: Award,
-    title: 'Excellence du service',
-    text: "Notre équipe dévouée s'assure que chaque visite soit une expérience exceptionnelle du début à la fin.",
+    title: 'Qualité et reconnaissance',
+    text: 'Contenus à jour des recommandations, diplômes reconnus (PSC1, etc.) et équipe de formateurs expérimentés.',
   },
 ]
 
@@ -29,10 +29,9 @@ export default function About() {
     <div className="min-h-screen">
       <div className="bg-dark text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">À propos de FoodIsBae</h1>
+          <h1 className="text-4xl font-bold mb-4">À propos de HBG Care</h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Depuis notre ouverture, nous nous engageons à offrir une expérience
-            culinaire authentique et mémorable.
+            Formations en médecine pour le grand public et les professionnels : premiers secours, gestion de crise, urgences.
           </p>
         </div>
       </div>
@@ -43,30 +42,22 @@ export default function About() {
             <h2 className="text-3xl font-bold mb-6">Notre histoire</h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                FoodIsBae est né d'une idée simple : créer un lieu où la bonne
-                cuisine et la convivialité se rencontrent. Fondé par des
-                passionnés de gastronomie, notre restaurant est devenu un
-                incontournable pour les amateurs de saveurs authentiques.
+                HBG Care est né d'une idée simple : rendre les gestes qui sauvent et les formations médicales accessibles au plus grand nombre. Pour le grand public, nous proposons comment prendre en charge une personne en crise sans être médecin ; pour les médecins, des formations poussées en urgences et réanimation.
               </p>
               <p>
-                Notre équipe de chefs talentueux puise son inspiration dans les
-                cuisines du monde entier, tout en mettant en valeur les produits
-                locaux et de saison. Chaque plat raconte une histoire, chaque
-                bouchée est une découverte.
+                Notre équipe de formateurs et professionnels de santé conçoit des programmes à jour des recommandations, du premier secours civique aux urgences vitales. Chaque formation vise à renforcer les compétences et la confiance en situation réelle.
               </p>
               <p>
-                Que vous veniez pour un déjeuner rapide, un dîner en famille ou
-                une soirée entre amis, FoodIsBae vous accueille dans une
-                ambiance chaleureuse et décontractée.
+                Que vous soyez particulier, entreprise ou professionnel de santé, HBG Care vous accompagne en présentiel et en ligne, à Kinshasa et au-delà.
               </p>
             </div>
           </div>
           <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-12 text-center">
-            <span className="text-8xl block mb-6">👨‍🍳</span>
+            <span className="text-8xl block mb-6">⚕️</span>
             <p className="text-2xl font-bold text-dark">
-              "La cuisine, c'est l'amour rendu visible."
+              "Soins accessibles au-delà des frontières de la santé."
             </p>
-            <p className="text-gray-500 mt-2">— L'équipe FoodIsBae</p>
+            <p className="text-gray-500 mt-2">— L'équipe HBG Care</p>
           </div>
         </div>
       </section>
@@ -97,11 +88,11 @@ export default function About() {
             </div>
             <div>
               <p className="text-4xl font-bold text-primary">10K+</p>
-              <p className="text-gray-500 mt-1">Clients satisfaits</p>
+              <p className="text-gray-500 mt-1">Participants formés</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-primary">50+</p>
-              <p className="text-gray-500 mt-1">Plats au menu</p>
+              <p className="text-4xl font-bold text-primary">15+</p>
+              <p className="text-gray-500 mt-1">Formations disponibles</p>
             </div>
             <div>
               <p className="text-4xl font-bold text-primary">4.8</p>

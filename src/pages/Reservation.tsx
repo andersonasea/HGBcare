@@ -39,7 +39,7 @@ export default function Reservation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Réservation</h1>
           <p className="text-gray-300 max-w-xl mx-auto">
-            Réservez votre table en quelques clics et profitez d'un moment unique.
+            Réservez une consultation ou une session de formation en quelques clics.
           </p>
         </div>
       </div>
@@ -123,18 +123,17 @@ export default function Reservation() {
 
           <div>
             <label className="flex items-center gap-2 text-sm font-medium text-dark mb-2">
-              <Users size={16} /> Nombre de personnes
+              <Users size={16} /> Type de rendez-vous
             </label>
             <select
-              {...register('guests', { required: 'Le nombre de personnes est requis' })}
+              {...register('guests', { required: 'Choisir un type est requis' })}
               className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
             >
-              <option value="">Combien de personnes ?</option>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                <option key={n} value={n}>
-                  {n} {n === 1 ? 'personne' : 'personnes'}
-                </option>
-              ))}
+              <option value="">Consultation / Formation ?</option>
+              <option value="1">Consultation médicale</option>
+              <option value="2">Formation individuelle</option>
+              <option value="3">Formation en groupe</option>
+              <option value="4">Autre</option>
             </select>
             {errors.guests && (
               <p className="text-red-500 text-sm mt-1">{errors.guests.message}</p>
@@ -143,13 +142,13 @@ export default function Reservation() {
 
           <div>
             <label className="text-sm font-medium text-dark mb-2 block">
-              Demandes spéciales (optionnel)
+              Message (optionnel)
             </label>
             <textarea
               {...register('notes')}
               rows={3}
               className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none"
-              placeholder="Allergies, occasion spéciale..."
+              placeholder="Sujet de la consultation, formation souhaitée..."
             />
           </div>
 

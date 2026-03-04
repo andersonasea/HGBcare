@@ -11,7 +11,7 @@ export default function Order() {
 
   const handleOrder = async () => {
     if (!user) {
-      toast.error('Veuillez vous connecter pour commander.')
+      toast.error('Veuillez vous connecter pour confirmer vos inscriptions.')
       return
     }
     if (items.length === 0) return
@@ -19,9 +19,9 @@ export default function Order() {
     try {
       await createOrder(user.uid, items, totalPrice)
       clearCart()
-      toast.success('Commande passée avec succès !')
+      toast.success('Inscriptions enregistrées avec succès !')
     } catch {
-      toast.error('Erreur lors de la commande. Veuillez réessayer.')
+      toast.error('Erreur lors de l\'inscription. Veuillez réessayer.')
     }
   }
 
@@ -29,9 +29,9 @@ export default function Order() {
     <div className="min-h-screen bg-gray-light">
       <div className="bg-dark text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Votre commande</h1>
+          <h1 className="text-4xl font-bold mb-4">Vos inscriptions aux formations</h1>
           <p className="text-gray-300">
-            Vérifiez votre panier et passez commande.
+            Vérifiez les formations sélectionnées et confirmez vos inscriptions.
           </p>
         </div>
       </div>
@@ -40,15 +40,15 @@ export default function Order() {
         {items.length === 0 ? (
           <div className="text-center py-16">
             <ShoppingBag size={64} className="mx-auto mb-4 text-gray-300" />
-            <h2 className="text-xl font-semibold mb-2">Votre panier est vide</h2>
+            <h2 className="text-xl font-semibold mb-2">Aucune formation sélectionnée</h2>
             <p className="text-gray-500 mb-6">
-              Parcourez notre menu et ajoutez vos plats préférés.
+              Parcourez notre catalogue de formations et ajoutez celles qui vous intéressent.
             </p>
             <Link
               to="/menu"
               className="inline-block bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-medium transition-colors"
             >
-              Voir le menu
+              Voir les formations
             </Link>
           </div>
         ) : (
@@ -65,7 +65,7 @@ export default function Order() {
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold truncate">{item.name}</h3>
                     <p className="text-primary font-medium">
-                      {item.price.toFixed(2)} €
+                      {item.price === 0 ? 'Gratuit' : `${item.price.toFixed(2)} €`}
                     </p>
                   </div>
                   <div className="flex items-center gap-2">
@@ -85,8 +85,8 @@ export default function Order() {
                       <Plus size={14} />
                     </button>
                   </div>
-                  <span className="font-semibold w-20 text-right">
-                    {(item.price * item.quantity).toFixed(2)} €
+                  <span className="font-semibold w-24 text-right">
+                    {item.price === 0 ? 'Gratuit' : `${(item.price * item.quantity).toFixed(2)} €`}
                   </span>
                   <button
                     onClick={() => removeItem(item.id)}
@@ -101,17 +101,17 @@ export default function Order() {
             <div className="bg-white rounded-xl shadow-sm p-6">
               <div className="flex justify-between items-center mb-4">
                 <span className="text-gray-500">Sous-total</span>
-                <span className="font-medium">{totalPrice.toFixed(2)} €</span>
+                <span className="font-medium">{totalPrice === 0 ? 'Gratuit' : `${totalPrice.toFixed(2)} €`}</span>
               </div>
               <div className="flex justify-between items-center mb-4">
-                <span className="text-gray-500">Frais de service</span>
-                <span className="font-medium">Gratuit</span>
+                <span className="text-gray-500">Frais d'inscription</span>
+                <span className="font-medium">Inclus</span>
               </div>
               <hr className="my-4" />
               <div className="flex justify-between items-center mb-6">
                 <span className="text-lg font-bold">Total</span>
                 <span className="text-lg font-bold text-primary">
-                  {totalPrice.toFixed(2)} €
+                  {totalPrice === 0 ? 'Gratuit' : `${totalPrice.toFixed(2)} €`}
                 </span>
               </div>
 
@@ -120,7 +120,7 @@ export default function Order() {
                   <Link to="/login" className="text-primary font-medium hover:underline">
                     Connectez-vous
                   </Link>{' '}
-                  pour passer votre commande.
+                  pour confirmer vos inscriptions aux formations.
                 </div>
               )}
 
@@ -129,7 +129,7 @@ export default function Order() {
                 disabled={!user || items.length === 0}
                 className="w-full bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 rounded-lg font-semibold transition-colors"
               >
-                Passer la commande
+                Confirmer mes inscriptions
               </button>
             </div>
           </div>

@@ -48,7 +48,7 @@ export default function Login() {
         <div className="text-center mb-8">
           <span className="text-4xl">🍽️</span>
           <h1 className="text-2xl font-bold mt-4 mb-2">Bienvenue</h1>
-          <p className="text-gray-500">Connectez-vous à votre compte FoodIsBae</p>
+          <p className="text-gray-500">Connectez-vous à votre compte HBG Care</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">

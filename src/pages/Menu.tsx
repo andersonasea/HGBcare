@@ -16,16 +16,16 @@ export default function Menu() {
 
   const handleAddToCart = (item: MenuItem) => {
     addItem(item)
-    toast.success(`${item.name} ajouté au panier`)
+    toast.success(`Formation ajoutée à vos inscriptions`)
   }
 
   return (
     <div className="min-h-screen bg-gray-light">
       <div className="bg-dark text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Notre Menu</h1>
+          <h1 className="text-4xl font-bold mb-4">Nos Formations</h1>
           <p className="text-gray-300 max-w-xl mx-auto">
-            Des plats savoureux préparés avec des ingrédients frais et de qualité.
+            Formations grand public (prise en charge de crise, premiers secours) et formations avancées pour les médecins.
           </p>
         </div>
       </div>
@@ -66,14 +66,14 @@ export default function Menu() {
                 <p className="text-gray-500 text-sm mb-4">{item.description}</p>
                 <div className="flex justify-between items-center">
                   <span className="text-primary font-bold text-xl">
-                    {item.price.toFixed(2)} €
+                    {item.price === 0 ? 'Gratuit' : `${item.price.toFixed(2)} €`}
                   </span>
                   <button
                     onClick={() => handleAddToCart(item)}
                     className="bg-primary hover:bg-primary-dark text-white p-2 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium px-4"
                   >
                     <Plus size={16} />
-                    Ajouter
+                    S'inscrire
                   </button>
                 </div>
               </div>
@@ -84,7 +84,7 @@ export default function Menu() {
         {filteredItems.length === 0 && (
           <div className="text-center py-12 text-gray-400">
             <ShoppingCart size={48} className="mx-auto mb-4 opacity-50" />
-            <p>Aucun plat dans cette catégorie pour le moment.</p>
+            <p>Aucune formation dans cette catégorie pour le moment.</p>
           </div>
         )}
       </div>
