@@ -73,7 +73,7 @@ export default function Partenaires() {
             >
              
                 
-             <img src={p.logo} alt="" width={20} height={20} />
+             <img src={p.logo} alt="logo" width={140} height={20} />
               
              
             </div>
