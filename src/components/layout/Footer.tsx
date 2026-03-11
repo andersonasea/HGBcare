@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react'
+import logoHbgCare from '../../assets/hbg-care-new-logo.png'
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">⚕️</span>
+            <img src={logoHbgCare} alt="HBG Care" className="h-9 w-auto" />
               <span className="text-xl font-bold">
                 HBG <span className="text-primary">Care</span>
               </span>
