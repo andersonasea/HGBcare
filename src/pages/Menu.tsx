@@ -4,6 +4,7 @@ import { SAMPLE_MENU, CATEGORIES } from '../services/menuService'
 import { useCart } from '../context/CartContext'
 import type { MenuItem } from '../types'
 import toast from 'react-hot-toast'
+import { Link } from 'react-router-dom'
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -66,15 +67,15 @@ export default function Menu() {
                 <p className="text-gray-500 text-sm mb-4">{item.description}</p>
                 <div className="flex justify-between items-center">
                   <span className="text-primary font-bold text-xl">
-                    {item.price === 0 ? 'Gratuit' : `${item.price.toFixed(2)} €`}
+                    {item.price === 0 ? 'Inscription Gratuit gratuite' : `${item.price.toFixed(2)} €`}
                   </span>
-                  <button
-                    onClick={() => handleAddToCart(item)}
+                  <Link to="/register"
+                    // onClick={() => handleAddToCart(item)}
                     className="bg-primary hover:bg-primary-dark text-white p-2 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium px-4"
                   >
                     <Plus size={16} />
                     S'inscrire
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

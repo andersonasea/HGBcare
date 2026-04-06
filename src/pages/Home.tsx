@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Star, Clock, MapPin, Utensils } from 'lucide-react'
 import { SAMPLE_MENU } from '../services/menuService'
 import type { Testimonial } from '../types'
+//import {bannerhbgcar} from '../assets/bannerhbgcare.jpg'
 
 const popularItems = SAMPLE_MENU.filter((item) => item.popular).slice(0, 4)
 
@@ -14,7 +15,7 @@ const testimonials: Testimonial[] = [
 export default function Home() {
   return (
     <div>
-      <section className="relative bg-gradient-to-br from-dark to-gray-900 text-white overflow-hidden">
+      <section className="relative  bg-[url('https://hbgcare.com/wp-content/uploads/2020/01/home-5-banner-bg.jpg')] bg-cover bg-center text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yIDItNCA0LTRzNCAxLjkgNCA0LTIgNC00IDQtNC0yLTQtNCIvPjwvZz48L2c+PC9zdmc+')] bg-repeat" />
         </div>
@@ -91,7 +92,7 @@ export default function Home() {
               Du grand public aux médecins : premiers secours, gestion de crise, urgences avancées.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {popularItems.map((item) => (
               <div
                 key={item.id}
@@ -101,8 +102,8 @@ export default function Home() {
                 <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
                 <p className="text-gray-500 text-sm mb-3 line-clamp-2">{item.description}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-primary font-bold text-lg">{item.price === 0 ? 'Gratuit' : `${item.price.toFixed(2)} €`}</span>
-                  <Link to="/menu" className="text-sm text-accent hover:underline font-medium">
+                  <span className="text-primary font-bold text-lg">{item.price === 0 ? 'Inscription Gratuite' : `${item.price.toFixed(2)} €`}</span>
+                  <Link to="/register" className="text-sm text-accent hover:underline font-medium">
                     S'inscrire
                   </Link>
                 </div>
